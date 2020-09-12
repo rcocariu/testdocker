@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
+
 """conbert strings into human readable text"""
 from django.utils.translation import gettext as _
 
@@ -25,7 +26,7 @@ class UserAdmin(BaseUserAdmin):
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('email','password1', 'password2')
+            'fields': ('email', 'password1', 'password2')
         }),
     )
 
