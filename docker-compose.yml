@@ -8,7 +8,7 @@ services:
         - "8000:8000"
     volumes:
         - ./app:/app
-    command: >
+    command: > # > means multiple lines for the command; 0.0.0.0 means all IP addresses on the container
         sh -c "python3 manage.py wait_for_db &&
                 python3 manage.py migrate &&
                 python3 manage.py runserver 0.0.0.0:8000"
@@ -22,7 +22,14 @@ services:
 
   db:
     image: postgres:12-alpine
+    container_name: "local_postgres"
+    ports:
+      - "5432:5432"
+    volumes:
+      - my_dbdata:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=app
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=supersecretpass
+volumes:
+  my_dbdata:
