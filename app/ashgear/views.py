@@ -1,14 +1,15 @@
 from django.shortcuts import render
-from django.http import request, Http404
-from django.template import RequestContext
+from django.http import Http404
 
 
-def home(request):
-    return render(request, 'ashgear/home.html', {'projects': ['project1', 'project2']})
+def home(req):
+    return render(req, 'ashgear/home.html',
+                  {'projects': ['project1', 'project2']})
 
 
-def handler404(request, exception):
-    return render(request, "errors/404.html", {})
+def handler404(req, exception):
+    return render(req, "errors/404.html", {})
 
-def products(request):
+
+def products(req):
     raise Http404("Poll does not exist")
