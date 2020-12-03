@@ -20,10 +20,10 @@ print(f'BASE_DIR is {BASE_DIR}')
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'e)n*cq#!igg&dq0ic8=hv9r%vt+*tg*-q$y_a(+qyttouywu-7'
+SECRET_KEY = 'shhh...secret'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1']
 
@@ -132,3 +132,8 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 AUTH_USER_MODEL = 'core.User'
+
+try:
+    from .local_settings import *
+except ImportError:
+    print("No local settings file. Use default")
